@@ -6,7 +6,7 @@ def download_handler(links_list):
         data = requests.get(link)
         tmp = tempfile.NamedTemporaryFile(mode ='wb')
         full_filename = tmp.name
-        dirname = os.path.dirname(os.path.abspath(full_filename))
+        dirname = os.path.dirname(full_filename)
         with open(full_filename, 'wb') as f:
             f.write(data.content)
             f.close()
@@ -17,6 +17,7 @@ def download_handler(links_list):
             os.rename(full_filename , dirname + "/" + os.path.basename(link))
             dirlist = os.listdir(dirname)
     return(dirname , dirlist)
+    
 
 def lambda_handler(event, context):
     bucket = ""
