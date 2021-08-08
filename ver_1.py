@@ -17,8 +17,6 @@ def download_handler(links_list):
             os.rename(full_filename , dirname + "/" + os.path.basename(link))
             dirlist = os.listdir(dirname)
     return(dirname , dirlist)
-    
-
 def lambda_handler(event, context):
     bucket = ""
     s3 = boto3.resource('')
